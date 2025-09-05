@@ -171,3 +171,19 @@ def get_plot_knn_boundaries(X , Y , K , save = False):
     if save == True:
         plt.savefig("KNN_Decision_Boundary.png" , dpi = 600)
     plt.show()
+        
+def reshaper(text: str) -> str:
+    import arabic_reshaper
+    from bidi.algorithm import get_display
+    """
+    Prepares Persian/Arabic text for proper display in matplotlib.
+
+    Parameters:
+        text (str): The input Persian/Arabic string.
+
+    Returns:
+        str: The reshaped and bidi-corrected string.
+    """
+    reshaped_text = arabic_reshaper.reshape(text)
+    bidi_text = get_display(reshaped_text)
+    return bidi_text
